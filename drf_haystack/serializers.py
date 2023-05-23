@@ -240,7 +240,10 @@ class HaystackSerializer(six.with_metaclass(HaystackSerializerMeta, serializers.
                         if index == current_index:
                             ret[field] = ret[orig_field]
                         del ret[orig_field]
-                elif field not in chain(instance.searchindex.fields.keys(), self._declared_fields.keys(), ["id"]):
+                elif field not in chain(
+                        instance.searchindex.fields.keys(),
+                        self._declared_fields.keys(), ["id"]
+                        ):
                     del ret[orig_field]
 
         # include the highlighted field in either case
